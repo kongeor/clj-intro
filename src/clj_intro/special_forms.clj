@@ -26,7 +26,44 @@
 
 ;; recur
 
+(defn factorial [n]
+  (if (= n 0)
+    1N
+    (* n (factorial (dec n)))))
+
+(factorial 5)
+
+(factorial 100)
+
+(factorial 100000)
+
+;; take 2
+
+(defn factorial2 [n]
+  (if (= n 0)
+    1N
+    (* n (recur (dec n)))))
+
+#_(factorial2 100000)
+
+;; take 3
+
+(defn factorial3 [n]
+  (loop [n n
+         r 1N]
+    (if (= n 0)
+      r
+      (recur (dec n) (* r n)))))
+
+(factorial3 100000)
+
+
 ;; throw
+
+(throw (IllegalArgumentException. "oh no you don't"))
+
+(throw (ex-info "boom" {}))
+
 
 ;; try/catch/finally
 

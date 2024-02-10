@@ -93,19 +93,90 @@
 
 (take 5 (iterate inc 5))
 
-;; Welcome to Lazy town!
-
 ;; all you fibonaccis are belong to us!
+
+;; fibo, take 1
 
 (defn fibo [a]
   (condp = a
-    0 0
+    0 1
     1 1
     (+ (fibo (dec a)) (fibo (- a 2)))))
 
-(map fibo (range 20))
+;; oh no...
+(map fibo (range 60))
 
-(map second (take 10 (iterate (fn [[a b]]
-                                [b (+ a b)]) [0 1])))
+;; fibo, take 2
 
-#_(lazy-seq)
+(declare memo-fibo)
+
+(defn fibo2 [a]
+  (condp = a
+    0 1
+    1 1
+    (+ (memo-fibo (dec a)) (memo-fibo (- a 2)))))
+
+(def memo-fibo (memoize fibo2))
+
+(map fibo2 (range 60))
+
+;; oh no
+(map fibo2 (range 600))
+
+;; fibo, take 3
+
+(declare memo-fibo3)
+
+(defn fibo3 [a]
+  (condp = a
+    0 1
+    1 1N  ;;  <- notice the N
+    (+ (memo-fibo3 (dec a)) (memo-fibo3 (- a 2)))))
+
+(def memo-fibo3 (memoize fibo3))
+
+;; :muscle:
+(last (map fibo3 (range 600)))
+
+;; fibo, take 4
+
+(defn fibo4 [n]
+  (first (last (take (inc n) (iterate (fn [[a b]]
+                                        [b (+ a b)]) [0 1N])))))
+
+(time (fibo4 600))
+
+(defn fibo5
+  ([]
+   (fibo5 1 1N))
+  ([a b]
+   (lazy-seq (cons a (fibo5 b (+ a b))))))
+
+
+(last (take 600 (fibo5)))
+
+;; lazy seqs
+
+;; realization
+
+(let [s (map inc (range 10))]
+  #_(println s)
+  (realized? s))
+
+;; chunking
+
+(let [s (take 5 (map #(do (println %)
+                          (inc %)) (range 40)))]
+  s)
+
+;; sequences
+
+(partition-all 3 (range 9))
+
+(apply map vector (partition-all 3 (range 9)))
+
+(split-with (partial > 5) (range 10))
+
+(get (System/getProperties) "java.vm.version")
+
+(re-seq #"\d+" (get (System/getProperties) "java.vm.version"))
