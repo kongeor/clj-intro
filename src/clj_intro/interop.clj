@@ -1,7 +1,7 @@
 (ns clj-intro.interop
   (:import (clojure.lang IPersistentCollection)))
 
-;; exceptions
+; exceptions
 
 (Integer/parseInt "foo")
 
@@ -59,9 +59,12 @@
 
 (comment
   ;; does not work because of different arities
-  (map Integer/parseInt ["1" "2"]))
+  (map Integer/decode ["1" "2"]))
 
-(map ^[String] Integer/parseInt ["1" "2"])
+;; that works!
+(map Integer/decode ["1" "2"])
+
+(map ^[String ] Integer/parseInt ["1" "2"])
 
 ;; java field descriptors: /home/kostas/projects/clj-intro/src/clj_intro/interop.clj
 
@@ -78,7 +81,7 @@
 (my-str-new-2 (str->bytes "foo"))
 
 (defn my-str-new [b]
-  (^[byte*] String. b))
+  (^[byte*] String/new b))
 
 (my-str-new (str->bytes "foo"))
 
@@ -91,6 +94,8 @@
             (apply [this x]
               (parse-double x))))
     ;; not working yet
+    #_(.map parse-double)
+    ;; not working yet
     ;; https://clojure.atlassian.net/browse/CLJ-2799
     #_(.map ^[double] Math/round)
     (.collect (java.util.stream.Collectors/toList)))
@@ -102,6 +107,8 @@
 ;; why would you do that?
 ;; performance ... see https://clojure.atlassian.net/browse/CLJ-2791
 ;; Implement Spliterable on PersistentVector
+
+(type (range 10))
 
 ;; used to work but now more performant
 (-> (range 10)
