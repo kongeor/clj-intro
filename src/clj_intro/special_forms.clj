@@ -1,4 +1,5 @@
-(ns clj-intro.special-forms)
+(ns clj-intro.special-forms
+  (:require [clj-java-decompiler.core :as dec]))
 
 (def x 1)
 
@@ -56,6 +57,12 @@
       (recur (dec n) (* r n)))))
 
 (factorial3 100000)
+
+(dec/decompile (loop [n 1
+         r 1N]
+    (if (= n 0)
+      r
+      (recur (dec n) (* r n)))))
 
 
 ;; throw
