@@ -1,4 +1,4 @@
-(ns clj-intro.demo
+(ns clj-intro.demo-final
   (:require [clj-java-decompiler.core :as dec]))
 
 ;; hi! I'm a comment!
