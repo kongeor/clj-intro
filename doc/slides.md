@@ -60,6 +60,7 @@ https://github.com/kongeor
 - Quacks like an intro
 - REPL driven
 - Concept oriented
+- It's a trap!
 
 
 ---
@@ -102,6 +103,7 @@ https://xkcd.com/224/
 - https://www.braveclojure.com/clojure-for-the-brave-and-true/
 - https://www.manning.com/books/the-joy-of-clojure-second-edition
 - https://clojurians.slack.com/
+- [Rich Hickey Talks youtube playlist](https://www.youtube.com/watch?v=YR5WdGrpoug&list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr&index=1)
 
 ---
 
