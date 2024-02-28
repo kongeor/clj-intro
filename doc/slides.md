@@ -21,13 +21,11 @@ https://github.com/kongeor
 
 # About me
 
-- Senior Clojure Engineer
-  * Mainly Java and Clojure
-  * But also Javascript and Python
+- Senior Clojure Engineer @ [pixelated noise](https://www.pixelated-noise.com/)
+  * Clojure and Java
+  * Javascript and Python
 - Experience
   * POS systems, Analytics, Real estate, Marketing
-  * Web services/API design
-  * And also FE (react), infra (AWS), e2e testing (cypress)
 
 
 ---
@@ -41,8 +39,14 @@ https://github.com/kongeor
   * \> 5
 - What do you do?
   * Web services/APIs? Frontends? Mobiles?
-  * Other
+  * Other?
 
+---
+
+# About this talk
+
+https://blog.cons.gr/posts/2024-02-28-clojure-101/
+https://github.com/kongeor/clj-intro/tree/main/src/clj_intro
 
 ---
 
@@ -69,7 +73,7 @@ https://github.com/kongeor
 
 1. hello world, syntax, REPL, basic functions
 1. data structures, equality, values
-1. loop/recur, lazy sequences, TCO, destructuring
+1. loop/recur, lazy sequences, TCO, HOF, destructuring
 1. polymorphism, protocols, host interop
 1. example 1: log parsing
 1. example 2: pattern matching, macros
@@ -104,6 +108,7 @@ https://xkcd.com/224/
 - https://www.manning.com/books/the-joy-of-clojure-second-edition
 - https://clojurians.slack.com/
 - [Rich Hickey Talks youtube playlist](https://www.youtube.com/watch?v=YR5WdGrpoug&list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr&index=1)
+- https://clojure.org/about/history
 
 ---
 
